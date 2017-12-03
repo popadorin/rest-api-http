@@ -1,12 +1,12 @@
 # HTTP protocol: a way of transmission of distributed data
 
-### Authors
+### Authors:
 
-**Dragos Lupei** 
+* Dragos Lupei
 
-**Vasile Schidu** 
+* Vasile Schidu
 
-**Dorin Popa**
+* Dorin Popa
 
-**Mihai Trofim**
+* Mihai Trofim
 
