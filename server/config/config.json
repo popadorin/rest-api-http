@@ -3,8 +3,6 @@
     "host": "localhost",
     "port": "27017",
     "scheme": "mongodb",
-    "database": "warehouse",
-    "username": "username",
-    "password": "password"
+    "database": "warehouse"
   }
 }

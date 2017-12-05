@@ -14,7 +14,23 @@ module.exports = {
 		let fields = req.query.fields;
 		try {
 			let task = await TaskService.getTaskById(taskId, fields);
-			res.status(200).json(task);
+			res.format({
+				'text/plain': function () {
+					res.status(200).send(task);
+				},
+
+				'text/html': function () {
+					res.status(200).send(`<p>${task}</p>`);
+				},
+
+				'application/json': function () {
+					res.status(200).json(task);
+				},
+
+				'default': function () {
+					res.status(406).send('Not Acceptable');
+				}
+			});
 		} catch (err) {
 			logger.error('TaskController.getTask(): ', err);
 			res.status(500).json(err);
@@ -24,7 +40,23 @@ module.exports = {
 	getTaskList: async (req, res) => {
 		try {
 			let tasks = await TaskService.getTaskList();
-			res.status(200).json(tasks);
+			res.format({
+				'text/plain': function () {
+					res.status(200).send(tasks);
+				},
+
+				'text/html': function () {
+					res.status(200).send(`<p>${tasks}</p>`);
+				},
+
+				'application/json': function () {
+					res.status(200).json(tasks);
+				},
+
+				'default': function () {
+					res.status(406).send('Not Acceptable');
+				}
+			});
 		} catch (err) {
 			logger.error('TaskController.getTaskList(): ', err);
 			res.status(500).json(err);
@@ -32,8 +64,6 @@ module.exports = {
 	},
 
 	createTask: async (req, res) => {
-		console.log(req.body)
-
 		let requestData = {
 			name: req.body.name,
 			description: req.body.description,
@@ -41,7 +71,23 @@ module.exports = {
 		};
 		try {
 			let task = await TaskService.createTask(requestData);
-			res.status(200).json(task);
+			res.format({
+				'text/plain': function () {
+					res.status(200).send(task);
+				},
+
+				'text/html': function () {
+					res.status(200).send(`<p>${task}</p>`);
+				},
+
+				'application/json': function () {
+					res.status(200).json(task);
+				},
+
+				'default': function () {
+					res.status(406).send('Not Acceptable');
+				}
+			});
 		} catch (err) {
 			logger.error('TaskController.createTask(): ', err);
 			res.status(500).json(err);
@@ -57,7 +103,23 @@ module.exports = {
 		};
 		try {
 			let task = await TaskService.updateTaskById(taskId, updatedData);
-			res.status(200).json(task);
+			res.format({
+				'text/plain': function () {
+					res.status(200).send(task);
+				},
+
+				'text/html': function () {
+					res.status(200).send(`<p>${task}</p>`);
+				},
+
+				'application/json': function () {
+					res.status(200).json(task);
+				},
+
+				'default': function () {
+					res.status(406).send('Not Acceptable');
+				}
+			});
 		} catch (err) {
 			logger.error('TaskController.updateTask(): ', err);
 			res.status(500).json(err);
