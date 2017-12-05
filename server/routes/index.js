@@ -10,7 +10,9 @@ let router = express.Router();
 let taskRouter = require('./task');
 
 module.exports = () => {
+
 	router.use('/', taskRouter);
+
 
 	return router;
 };
