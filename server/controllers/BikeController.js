@@ -1,30 +1,30 @@
 /**
- * @module TaskController
+ * @module BikeController
  * @description This module contains methods which extracts the required parameters from the request and forwards them onto the corresponding service layer and return back the result.
  */
 
-const TaskService = require('./../services/TaskService');
+const BikeService = require('./../services/BikeService');
 const logger = require('../config/logger.js');
 
 
 module.exports = {
 
-	getTaskById: async (req, res) => {
-		let taskId = req.params.taskId;
+	getBikeById: async (req, res) => {
+		let bikeId = req.params.bikeId;
 		let fields = req.query.fields;
 		try {
-			let task = await TaskService.getTaskById(taskId, fields);
+			let bike = await BikeService.getBikeById(bikeId, fields);
 			res.format({
 				'text/plain': function () {
-					res.status(200).send(task);
+					res.status(200).send(bike);
 				},
 
 				'text/html': function () {
-					res.status(200).send(`<p>${task}</p>`);
+					res.status(200).send(`<p>${bike}</p>`);
 				},
 
 				'application/json': function () {
-					res.status(200).json(task);
+					res.status(200).json(bike);
 				},
 
 				'default': function () {
@@ -32,25 +32,25 @@ module.exports = {
 				}
 			});
 		} catch (err) {
-			logger.error('TaskController.getTask(): ', err);
+			logger.error('BikeController.getBike(): ', err);
 			res.status(500).json(err);
 		}
 	},
 
-	getTaskList: async (req, res) => {
+	getBikeList: async (req, res) => {
 		try {
-			let tasks = await TaskService.getTaskList();
+			let bikes = await BikeService.getBikeList();
 			res.format({
 				'text/plain': function () {
-					res.status(200).send(tasks);
+					res.status(200).send(bikes);
 				},
 
 				'text/html': function () {
-					res.status(200).send(`<p>${tasks}</p>`);
+					res.status(200).send(`<p>${bikes}</p>`);
 				},
 
 				'application/json': function () {
-					res.status(200).json(tasks);
+					res.status(200).json(bikes);
 				},
 
 				'default': function () {
@@ -58,30 +58,30 @@ module.exports = {
 				}
 			});
 		} catch (err) {
-			logger.error('TaskController.getTaskList(): ', err);
+			logger.error('BikeController.getBikeList(): ', err);
 			res.status(500).json(err);
 		}
 	},
 
-	createTask: async (req, res) => {
+	createBike: async (req, res) => {
 		let requestData = {
 			name: req.body.name,
 			description: req.body.description,
-			taskTime: req.body.taskTime
+			bikeTime: req.body.bikeTime
 		};
 		try {
-			let task = await TaskService.createTask(requestData);
+			let bike = await BikeService.createBike(requestData);
 			res.format({
 				'text/plain': function () {
-					res.status(200).send(task);
+					res.status(200).send(bike);
 				},
 
 				'text/html': function () {
-					res.status(200).send(`<p>${task}</p>`);
+					res.status(200).send(`<p>${bike}</p>`);
 				},
 
 				'application/json': function () {
-					res.status(200).json(task);
+					res.status(200).json(bike);
 				},
 
 				'default': function () {
@@ -89,31 +89,31 @@ module.exports = {
 				}
 			});
 		} catch (err) {
-			logger.error('TaskController.createTask(): ', err);
+			logger.error('BikeController.createBike(): ', err);
 			res.status(500).json(err);
 		}
 	},
 
-	updateTask: async (req, res) => {
-		let taskId = req.params.taskId;
+	updateBike: async (req, res) => {
+		let bikeId = req.params.bikeId;
 		let updatedData = {
 			name: req.body.name,
 			description: req.body.description,
 			status: req.body.status
 		};
 		try {
-			let task = await TaskService.updateTaskById(taskId, updatedData);
+			let bike = await BikeService.updateBikeById(bikeId, updatedData);
 			res.format({
 				'text/plain': function () {
-					res.status(200).send(task);
+					res.status(200).send(bike);
 				},
 
 				'text/html': function () {
-					res.status(200).send(`<p>${task}</p>`);
+					res.status(200).send(`<p>${bike}</p>`);
 				},
 
 				'application/json': function () {
-					res.status(200).json(task);
+					res.status(200).json(bike);
 				},
 
 				'default': function () {
@@ -121,18 +121,18 @@ module.exports = {
 				}
 			});
 		} catch (err) {
-			logger.error('TaskController.updateTask(): ', err);
+			logger.error('BikeController.updateBike(): ', err);
 			res.status(500).json(err);
 		}
 	},
 
-	deleteTask: async (req, res) => {
-		let taskId = req.params.taskId;
+	deleteBike: async (req, res) => {
+		let bikeId = req.params.bikeId;
 		try {
-			let tasks = await TaskService.removeTaskById(taskId);
-			res.status(200).json(tasks);
+			let bikes = await BikeService.removeBikeById(bikeId);
+			res.status(200).json(bikes);
 		} catch (err) {
-			logger.error('TaskController.deleteTask(): ', err);
+			logger.error('BikeController.deleteBike(): ', err);
 			res.status(500).json(err);
 		}
 	},

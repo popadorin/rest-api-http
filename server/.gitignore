@@ -51,7 +51,7 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-bike-files)
 .grunt
 
 # Bower dependency directory (https://bower.io/)
@@ -95,7 +95,7 @@ typings/
 
 # User-specific stuff:
 .idea/**/workspace.xml
-.idea/**/tasks.xml
+.idea/**/bikes.xml
 .idea/dictionaries
 
 # Sensitive or high-churn files:
@@ -135,7 +135,7 @@ atlassian-ide-plugin.xml
 .idea/replstate.xml
 
 # Ruby plugin and RubyMine
-/.rakeTasks
+/.rakeBikes
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml

@@ -7,11 +7,11 @@
 let express = require('express');
 let router = express.Router();
 
-let taskRouter = require('./task');
+let bikeRouter = require('./bike');
 
 module.exports = () => {
 
-	router.use('/', taskRouter);
+	router.use('/', bikeRouter);
 
 
 	return router;
