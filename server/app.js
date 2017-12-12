@@ -11,15 +11,7 @@ const bodyParser = require('body-parser');
 const router = require('./routes');
 const hateoas = require('./middleware/hateoas');
 
-/**
- * Create Express server.
- */
 const app = express();
-
-
-/**
- * Express configuration.
- */
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,9 +25,6 @@ app.use(hateoas);
 
 app.use('/', router());
 
-/**
- * Error Handler.
- */
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	let err = new Error('Not Found');

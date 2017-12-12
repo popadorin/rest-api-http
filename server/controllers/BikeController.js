@@ -1,11 +1,5 @@
-/**
- * @module BikeController
- * @description This module contains methods which extracts the required parameters from the request and forwards them onto the corresponding service layer and return back the result.
- */
-
 const BikeService = require('./../services/BikeService');
 const logger = require('../config/logger.js');
-
 
 module.exports = {
 
@@ -67,7 +61,7 @@ module.exports = {
 		let requestData = {
 			name: req.body.name,
 			description: req.body.description,
-			bikeTime: req.body.bikeTime
+			rentTime: req.body.rentTime
 		};
 		try {
 			let bike = await BikeService.createBike(requestData);

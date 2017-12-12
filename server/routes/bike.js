@@ -11,8 +11,7 @@ router.get('/hateoas/bikes', (req, res) => {
 		"description": "This is bike description",
 		"status": "Initial",
 		"time": {
-			"bikeTime": 24,
-			"bonusTime": 24 / 2,
+			"rentTime": 1
 		}
 	};
 
